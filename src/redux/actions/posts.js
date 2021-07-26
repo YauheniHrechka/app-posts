@@ -6,6 +6,6 @@ export const fetchPosts = () => dispatch => {
 }
 
 const setPosts = posts => ({
-    type: "SET_POSTS",
+    type: 'SET_POSTS',
     payload: posts
 })
