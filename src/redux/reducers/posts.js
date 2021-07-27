@@ -1,4 +1,4 @@
-const initialState = new Map();
+const initialState = [];
 
 const arrayToMap = arr => {
     if (!arr.length) return new Map();
@@ -18,7 +18,8 @@ const posts = (state = initialState, { type, payload }) => {
     switch (type) {
 
         case 'SET_POSTS':
-            return arrayToMap(payload);
+            // return arrayToMap(payload);
+            return payload;
 
         default:
             return state;
