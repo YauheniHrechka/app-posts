@@ -1,10 +1,10 @@
 import React from 'react';
-import { Notification } from '../';
+import { Notification } from '..';
 import { IconButton } from '@fluentui/react/lib/Button';
 import { Stack } from '@fluentui/react';
 import classNames from './styles';
 
-const Post = ({ user: { name }, userId, id: postId, title, body, onDeletePost }) => {
+const PostItem = ({ user: { name }, userId, id: postId, title, body, onDeletePost }) => {
     // console.log('userId -> ', userId, postId);
 
     const [showNotification, setShowNotification] = React.useState(false);
@@ -39,4 +39,4 @@ const Post = ({ user: { name }, userId, id: postId, title, body, onDeletePost })
     )
 }
 
-export default Post;
+export default PostItem;

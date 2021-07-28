@@ -7,13 +7,18 @@ const classNames = mergeStyleSets({
     itemCell: [
         getFocusStyle(theme, { inset: -1 }),
         {
+            background: 'rgb(48, 64, 64)',
+            color: 'white',
             minHeight: 54,
+            margin: '5px 0',
             padding: 10,
             boxSizing: 'border-box',
-            borderBottom: `1px solid ${semanticColors.bodyDivider}`,
+            // borderBottom: `1px solid ${semanticColors.bodyDivider}`,
+            borderRadius: 15,
+            cursor: 'pointer',
             display: 'flex',
             selectors: {
-                '&:hover': { background: palette.neutralLight },
+                '&:hover': { background: 'rgb(48, 64, 64, 0.75)' },
             },
         },
     ],
@@ -40,6 +45,12 @@ const classNames = mergeStyleSets({
     },
     itemButton: {
         color: 'red',
+        selectors: {
+            '&:hover': {
+                background: 'rgb(48, 64, 64, 0.75)',
+                color: 'red'
+            },
+        },
     }
 });
 
