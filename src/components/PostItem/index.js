@@ -1,11 +1,8 @@
 import React from 'react';
-import { Notification } from '..';
-import { IconButton } from '@fluentui/react/lib/Button';
-import { Stack } from '@fluentui/react';
-import classNames from './styles';
+import { Button, Notification } from '..';
+import { mergeStyleSets, getTheme, getFocusStyle } from '@fluentui/react/lib/Styling';
 
 const PostItem = ({ user: { name }, userId, id: postId, title, body, onDeletePost }) => {
-    // console.log('userId -> ', userId, postId);
 
     const [showNotification, setShowNotification] = React.useState(false);
 
@@ -24,19 +21,68 @@ const PostItem = ({ user: { name }, userId, id: postId, title, body, onDeletePos
                     <div className={classNames.itemIndex}>{`Author: ${name}`}</div>
                     <div>{body}</div>
                 </div>
-                <Stack horizontal>
-                    <IconButton
-                        iconProps={{ iconName: 'Delete' }}
-                        className={classNames.itemButton}
-                        title="Delete"
-                        ariaLabel="Delete"
-                        onClick={onClickDelete}
-                    />
-                </Stack>
+                <Button
+                    kind="icon"
+                    id={`delete-${postId}`}
+                    iconProps={{ iconName: 'Delete' }}
+                    className={classNames.itemButton}
+                    title="Delete"
+                    onClick={onClickDelete}
+                />
             </div>
-            {showNotification && <Notification title={title} onClickAnswer={onClickAnswer} />}
+            {showNotification && <Notification buttonId={`delete-${postId}`} title={title} onClickAnswer={onClickAnswer} />}
         </>
     )
 }
+
+const theme = getTheme();
+const { palette, fonts } = theme;
+
+const classNames = mergeStyleSets({
+    itemCell: [
+        getFocusStyle(theme, { inset: -1 }),
+        {
+            background: '#304040',
+            color: '#ffffff',
+            minHeight: '54px',
+            margin: '5px 0',
+            padding: '10px',
+            boxSizing: 'border-box',
+            borderRadius: '15px',
+            cursor: 'pointer',
+            display: 'flex',
+            selectors: {
+                '&:hover': { background: '#455353' },
+            },
+        },
+    ],
+    itemContent: {
+        marginLeft: '10px',
+        overflow: 'hidden',
+        flexGrow: 1,
+    },
+    itemName: [
+        fonts.xLarge,
+        {
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+        },
+    ],
+    itemIndex: {
+        fontSize: fonts.small.fontSize,
+        color: palette.neutralTertiary,
+        marginBottom: '10px',
+    },
+    itemButton: {
+        color: '#ff0000',
+        selectors: {
+            '&:hover, &:active': {
+                background: '#455353',
+                color: '#ff0000'
+            },
+        },
+    }
+});
 
 export default PostItem;

@@ -19,6 +19,11 @@ const setPostsAndUsers = (posts, users) => ({
     }
 })
 
+export const addPost = post => ({
+    type: 'ADD_POST',
+    payload: post
+})
+
 export const deletePostById = postId => ({
     type: 'DELETE_POST_BY_ID',
     payload: postId

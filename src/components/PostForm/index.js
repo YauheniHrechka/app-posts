@@ -1,48 +1,63 @@
 import React from 'react';
-import { TextField } from '@fluentui/react/lib/TextField';
-import { Stack } from '@fluentui/react';
-import { Dropdown, DropdownMenuItemType, IDropdownStyles, IDropdownOption } from '@fluentui/react/lib/Dropdown';
-import { PrimaryButton } from '@fluentui/react/lib/Button';
-import { Label } from '@fluentui/react/lib/Label';
+import { Button, Dropdown, Input, Label, TextArea } from '../';
+import { mergeStyleSets } from '@fluentui/react';
 
 const PostForm = ({ users, onAddPost }) => {
 
-    const options = users.map(user => ({
-        key: user.id,
-        text: user.name
-    }));
+    const [user, setUser] = React.useState({});
+    const [title, setTitle] = React.useState('');
+    const [body, setBody] = React.useState('');
+
+    const onChangeUser = (e, item) => setUser(item.user);
+    const onChangeTitle = e => setTitle(e.target.value);
+    const onChangeBody = e => setBody(e.target.value);
+
+    const onClickSubmit = e => {
+        e.preventDefault();
+        onAddPost({ userId: user.id, user, title, body });
+    }
 
     return (
-        <form action="" style={{
-            background: 'rgb(48, 64, 64)',
-            color: 'white',
-            padding: 15,
-            margin: '5px 0',
-            borderRadius: 15
-        }}>
-            {/* <Stack horizontal> */}
-            {/* <TextField label="User" placeholder="Change user" onChange={() => { }} /> */}
-            <Label style={{ color: 'white' }}>Author
-                <Dropdown placeholder="Select an author" options={options} />
+        <form action="" className={classNames.form}>
+            <Label>Author
+                <Dropdown placeholder="Select an author" users={users} onChange={onChangeUser} />
             </Label>
-            {/* </Stack> */}
-            <Label style={{ color: 'white' }}>Title
-                <TextField placeholder="Input title" />
+            <Label>Title
+                <Input placeholder="Input title" value={title} onChange={onChangeTitle} />
             </Label>
-            <Label style={{ color: 'white' }}>Text
-                <TextField placeholder="Input text" multiline rows={3} />
+            <Label>Text
+                <TextArea placeholder="Input text" value={body} onChange={onChangeBody} />
             </Label>
-            <Stack horizontal>
-                <PrimaryButton
-                    style={{
-                        background: 'limegreen',
-                        borderRadius: '10px',
-                        border: 'none'
-                    }}
-                    text="Create new post" type="submit" onClick={onAddPost} />
-            </Stack>
-        </form>
+            <Button
+                kind="primary"
+                className={classNames.button}
+                text="Create new post"
+                type="submit"
+                onClick={onClickSubmit}
+            />
+        </form >
     )
 }
+
+const classNames = mergeStyleSets({
+    form: {
+        background: '#304040',
+        padding: '15px',
+        margin: '5px 0',
+        borderRadius: '15px'
+    },
+    button: {
+        backgroundColor: '#32cd32',
+        borderRadius: '10px',
+        border: 'none',
+        selectors: {
+            '&:hover, &:active': {
+                background: '#47d247',
+                color: '#ffffff',
+                border: 'none',
+            },
+        }
+    },
+})
 
 export default PostForm;

@@ -10,6 +10,8 @@ const setPosts = ({ posts, users }) => {
 
 const deletePost = (posts, payload, field) => posts.filter(post => post[field] !== payload);
 
+const addPost = (posts, newPost) => [{ ...newPost, id: Date.now() }, ...posts];
+
 const posts = (state = initialState, { type, payload }) => {
     switch (type) {
 
@@ -17,6 +19,12 @@ const posts = (state = initialState, { type, payload }) => {
             return {
                 posts: setPosts(payload),
                 users: payload.users
+            }
+
+        case 'ADD_POST':
+            return {
+                ...state,
+                posts: addPost(state.posts, payload)
             }
 
         case 'DELETE_POST_BY_ID':
