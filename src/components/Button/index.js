@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ActionButton, DefaultButton, IconButton, PrimaryButton } from '@fluentui/react/lib/Button';
 
-const Button = ({ kind, style = {}, ...params }) => {
+const Button = ({ kind, style, ...params }) => {
     const attributes = {
         ...params,
         style: {
@@ -22,6 +23,18 @@ const Button = ({ kind, style = {}, ...params }) => {
         default:
             return <DefaultButton {...attributes} />
     }
+}
+
+Button.propTypes = {
+    kind: PropTypes.string,
+    style: PropTypes.object,
+    params: PropTypes.object,
+}
+
+Button.defaultProps = {
+    kind: 'default',
+    style: {},
+    params: {},
 }
 
 export default Button;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Dropdown, Input, Label, TextArea } from '../';
 import { mergeStyleSets } from '@fluentui/react';
 
@@ -59,5 +60,15 @@ const classNames = mergeStyleSets({
         }
     },
 })
+
+PostForm.propTypes = {
+    users: PropTypes.array,
+    onAddPost: PropTypes.func,
+}
+
+PostForm.defaultProps = {
+    users: [],
+    onAddPost: () => { },
+}
 
 export default PostForm;

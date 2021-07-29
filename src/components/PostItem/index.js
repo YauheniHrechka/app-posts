@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Notification } from '..';
 import { mergeStyleSets, getTheme, getFocusStyle } from '@fluentui/react/lib/Styling';
 
@@ -84,5 +85,25 @@ const classNames = mergeStyleSets({
         },
     }
 });
+
+// user: { name }, userId, id: postId, title, body, onDeletePost
+
+PostItem.propTypes = {
+    user: PropTypes.object,
+    userId: PropTypes.number,
+    id: PropTypes.number,
+    title: PropTypes.string,
+    body: PropTypes.string,
+    onDeletePost: PropTypes.func,
+}
+
+PostItem.defaultProps = {
+    user: { name: '' },
+    userId: NaN,
+    id: NaN,
+    title: '',
+    body: '',
+    onDeletePost: () => { },
+}
 
 export default PostItem;

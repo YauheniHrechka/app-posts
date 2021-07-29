@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Label as FluentLabel } from '@fluentui/react/lib/Label';
 
 const defaultAttributes = {
@@ -7,7 +8,7 @@ const defaultAttributes = {
     }
 };
 
-const Label = ({ style = {}, ...params }) => {
+const Label = ({ style, ...params }) => {
     const attributes = {
         ...defaultAttributes,
         ...params,
@@ -18,6 +19,16 @@ const Label = ({ style = {}, ...params }) => {
     }
 
     return <FluentLabel {...attributes} />
+}
+
+Label.propTypes = {
+    style: PropTypes.object,
+    params: PropTypes.object,
+}
+
+Label.defaultProps = {
+    style: {},
+    params: {},
 }
 
 export default Label;

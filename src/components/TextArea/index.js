@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TextField } from '@fluentui/react/lib/TextField';
 
 const defaultAttributes = {
@@ -7,7 +8,7 @@ const defaultAttributes = {
     style: {}
 };
 
-const TextArea = ({ style = {}, ...params }) => {
+const TextArea = ({ style, ...params }) => {
     const attributes = {
         ...defaultAttributes,
         ...params,
@@ -18,6 +19,16 @@ const TextArea = ({ style = {}, ...params }) => {
     }
 
     return <TextField {...attributes} />
+}
+
+TextArea.propTypes = {
+    style: PropTypes.object,
+    params: PropTypes.object,
+}
+
+TextArea.defaultProps = {
+    style: {},
+    params: {},
 }
 
 export default TextArea;

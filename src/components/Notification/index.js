@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from '../';
 import { FocusTrapCallout, Stack, FocusZone, mergeStyleSets, FontWeights, Text } from '@fluentui/react';
 
@@ -47,5 +48,17 @@ const styles = mergeStyleSets({
         margin: '0 5px'
     },
 });
+
+Notification.propTypes = {
+    buttonId: PropTypes.string,
+    title: PropTypes.string,
+    onClickAnswer: PropTypes.func,
+}
+
+Notification.defaultProps = {
+    buttonId: '',
+    title: '',
+    onClickAnswer: () => { },
+}
 
 export default Notification;
