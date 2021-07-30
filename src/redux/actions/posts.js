@@ -1,12 +1,21 @@
 import axios from 'axios';
 
 export const fetchPosts = () => async dispatch => {
+    let users, posts;
 
-    let users = await axios.get('https://jsonplaceholder.typicode.com/users')
-        .then(res => res.data)
+    try {
+        users = await axios.get('https://jsonplaceholder.typicode.com/users')
+            .then(res => res.data);
+    } catch (e) {
+        users = [];
+    }
 
-    let posts = await axios.get('https://jsonplaceholder.typicode.com/posts')
-        .then(res => res.data);
+    try {
+        posts = await axios.get('https://jsonplaceholder.typicode.com/posts')
+            .then(res => res.data);
+    } catch (e) {
+        posts = [];
+    }
 
     dispatch(setPostsAndUsers(posts, users));
 }

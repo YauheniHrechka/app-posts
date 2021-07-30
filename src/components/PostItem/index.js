@@ -86,8 +86,6 @@ const classNames = mergeStyleSets({
     }
 });
 
-// user: { name }, userId, id: postId, title, body, onDeletePost
-
 PostItem.propTypes = {
     user: PropTypes.object,
     userId: PropTypes.number,
