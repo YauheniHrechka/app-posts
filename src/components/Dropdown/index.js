@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown as FluentDropdown } from '@fluentui/react/lib/Dropdown';
+import { Dropdown as FluentDropdown } from '@fluentui/react';
 
 const Dropdown = ({ users, style, ...params }) => {
     const options = users.map(user => ({

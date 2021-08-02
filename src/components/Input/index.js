@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@fluentui/react/lib/TextField';
+import { TextField } from '@fluentui/react';
 
 const Input = (props) => <TextField {...props} />
 

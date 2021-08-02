@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Label as FluentLabel } from '@fluentui/react/lib/Label';
+import { Label as FluentLabel } from '@fluentui/react';
 
 const defaultAttributes = {
     style: {

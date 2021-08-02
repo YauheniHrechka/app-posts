@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Notification } from '..';
-import { mergeStyleSets, getTheme, getFocusStyle } from '@fluentui/react/lib/Styling';
+import { Button, Notification } from '../';
+import { mergeStyleSets, getTheme, getFocusStyle } from '@fluentui/react';
 
 const PostItem = ({ user: { name }, userId, id: postId, title, body, onDeletePost }) => {
 

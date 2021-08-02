@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextField } from '@fluentui/react/lib/TextField';
+import { TextField } from '@fluentui/react';
 
 const defaultAttributes = {
     multiline: true,

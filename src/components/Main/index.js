@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { addPost, deletePostById, fetchPosts } from '../../redux/actions/posts';
+import { addPost, deletePostById, fetchData } from '../../redux/actions/posts';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, PostForm, PostItem } from '../';
 
@@ -14,7 +14,7 @@ const Main = () => {
     const { posts, users } = useSelector(state => state.posts);
 
     React.useEffect(() => {
-        dispatch(fetchPosts());
+        dispatch(fetchData());
     }, [dispatch]);
 
     const onAddPost = post => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ActionButton, DefaultButton, IconButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import { ActionButton, DefaultButton, IconButton, PrimaryButton } from '@fluentui/react';
 
 const Button = ({ kind, style, ...params }) => {
     const attributes = {
